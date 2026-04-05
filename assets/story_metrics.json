@@ -1,0 +1,1668 @@
+{
+  "build": {
+    "script": "build_assignment2_assets.py",
+    "generated_at_utc": "2026-03-27T12:57:06+00:00",
+    "display_rounding": {
+      "percent_and_pp": 3,
+      "index_display": 2,
+      "counts": "integer"
+    }
+  },
+  "build_config": {
+    "data_path": "../sfpd_merged_2003_present.csv",
+    "geo_path": "../sfpd.geojson",
+    "output_dir": "assets",
+    "chunksize": 300000
+  },
+  "columns_used": [
+    "incident_datetime",
+    "police_district",
+    "unified_category"
+  ],
+  "filter_logic": {
+    "year_window": {
+      "start": 2018,
+      "end": 2025
+    },
+    "required_non_null_fields_for_story_metrics": [
+      "incident_datetime (after parse)",
+      "police_district",
+      "unified_category"
+    ],
+    "district_normalization": "strip + uppercase",
+    "district_scope_for_share_metrics": [
+      "CENTRAL",
+      "SOUTHERN",
+      "BAYVIEW",
+      "MISSION",
+      "PARK",
+      "RICHMOND",
+      "INGLESIDE",
+      "TARAVAL",
+      "NORTHERN",
+      "TENDERLOIN"
+    ],
+    "property_category_filter_exact_values": [
+      "Larceny/Theft",
+      "Burglary",
+      "Motor Vehicle Theft"
+    ]
+  },
+  "data_profile": {
+    "source_columns": [
+      "source_dataset",
+      "row_id",
+      "incident_number",
+      "incident_code",
+      "incident_category_raw",
+      "incident_description",
+      "incident_day_of_week",
+      "incident_datetime",
+      "incident_date",
+      "incident_time",
+      "police_district",
+      "resolution",
+      "location_text",
+      "latitude",
+      "longitude",
+      "point",
+      "unified_category"
+    ],
+    "row_count_raw": 2837609,
+    "null_counts_raw": {
+      "incident_datetime": 0,
+      "police_district": 1,
+      "unified_category": 1377931
+    },
+    "invalid_datetime_count": 0,
+    "datetime_min": "2003-01-01 00:01:00",
+    "datetime_max": "2026-02-01 22:52:00",
+    "year_counts_raw_valid_datetime": {
+      "2003": 128111,
+      "2004": 126130,
+      "2005": 121879,
+      "2006": 123762,
+      "2007": 122366,
+      "2008": 125096,
+      "2009": 122489,
+      "2010": 115543,
+      "2011": 115079,
+      "2012": 123449,
+      "2013": 134045,
+      "2014": 131308,
+      "2015": 138148,
+      "2016": 132309,
+      "2017": 135869,
+      "2018": 138541,
+      "2019": 134495,
+      "2020": 107630,
+      "2021": 117771,
+      "2022": 125000,
+      "2023": 122908,
+      "2024": 102371,
+      "2025": 87142,
+      "2026": 6168
+    },
+    "district_counts_raw_non_null": {
+      "BAYVIEW": 268802,
+      "CENTRAL": 336244,
+      "INGLESIDE": 234016,
+      "MISSION": 371621,
+      "NORTHERN": 365658,
+      "OUT OF SF": 31943,
+      "PARK": 148252,
+      "RICHMOND": 158245,
+      "SOUTHERN": 465900,
+      "TARAVAL": 206450,
+      "TENDERLOIN": 250477
+    },
+    "district_names_raw_non_null_sorted": [
+      "BAYVIEW",
+      "CENTRAL",
+      "INGLESIDE",
+      "MISSION",
+      "NORTHERN",
+      "OUT OF SF",
+      "PARK",
+      "RICHMOND",
+      "SOUTHERN",
+      "TARAVAL",
+      "TENDERLOIN"
+    ],
+    "category_counts_raw_non_null": {
+      "Assault": 208092,
+      "Burglary": 140695,
+      "Fraud": 69560,
+      "Larceny/Theft": 744242,
+      "Missing Person": 55232,
+      "Motor Vehicle Theft": 152723,
+      "Robbery": 73391,
+      "Stolen Property": 15743
+    },
+    "category_names_raw_non_null_sorted": [
+      "Assault",
+      "Burglary",
+      "Fraud",
+      "Larceny/Theft",
+      "Missing Person",
+      "Motor Vehicle Theft",
+      "Robbery",
+      "Stolen Property"
+    ],
+    "analysis_filtered_row_count": 523404,
+    "analysis_filtered_year_counts": {
+      "2018": 78586,
+      "2019": 76695,
+      "2020": 60691,
+      "2021": 67821,
+      "2022": 74005,
+      "2023": 70327,
+      "2024": 53702,
+      "2025": 41577
+    }
+  },
+  "year_completeness": {
+    "raw_valid_datetime_month_coverage": {
+      "2018": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2019": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2020": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2021": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2022": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2023": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2024": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2025": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      }
+    },
+    "analysis_filtered_month_coverage": {
+      "2018": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2019": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2020": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2021": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2022": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2023": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2024": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2025": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      }
+    },
+    "property_category_month_coverage": {
+      "Larceny/Theft": {
+        "2018": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2019": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2020": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2021": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2022": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2023": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2024": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2025": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        }
+      },
+      "Burglary": {
+        "2018": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2019": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2020": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2021": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2022": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2023": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2024": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2025": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        }
+      },
+      "Motor Vehicle Theft": {
+        "2018": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2019": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2020": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2021": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2022": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2023": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2024": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        },
+        "2025": {
+          "months_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "n_months": 12,
+          "is_complete_year": true
+        }
+      }
+    },
+    "larceny_share_base_month_coverage": {
+      "2018": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2019": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2020": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2021": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2022": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2023": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2024": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      },
+      "2025": {
+        "months_present": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "n_months": 12,
+        "is_complete_year": true
+      }
+    },
+    "year_2025_status": {
+      "analysis_filtered_is_complete_year": true,
+      "analysis_filtered_months_present": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "larceny_share_base_is_complete_year": true,
+      "larceny_share_base_months_present": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "all_property_categories_complete_2025": true,
+      "property_category_status_summary": [
+        "Larceny/Theft: complete=True months=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
+        "Burglary: complete=True months=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
+        "Motor Vehicle Theft: complete=True months=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]"
+      ],
+      "prose_recommendation": "2025 appears complete for story metrics (all 12 months present). You can discuss 2025 as a full-year endpoint for this filtered analysis scope."
+    }
+  },
+  "yearly_index_snapshot": {
+    "2018": {
+      "Burglary": 115.85,
+      "Larceny/Theft": 100.17,
+      "Motor Vehicle Theft": 98.17
+    },
+    "2019": {
+      "Burglary": 100.0,
+      "Larceny/Theft": 100.0,
+      "Motor Vehicle Theft": 100.0
+    },
+    "2020": {
+      "Burglary": 151.88,
+      "Larceny/Theft": 63.28,
+      "Motor Vehicle Theft": 139.3
+    },
+    "2021": {
+      "Burglary": 145.82,
+      "Larceny/Theft": 78.21,
+      "Motor Vehicle Theft": 145.93
+    },
+    "2022": {
+      "Burglary": 120.56,
+      "Larceny/Theft": 88.73,
+      "Motor Vehicle Theft": 151.38
+    },
+    "2023": {
+      "Burglary": 111.72,
+      "Larceny/Theft": 79.65,
+      "Motor Vehicle Theft": 165.98
+    },
+    "2024": {
+      "Burglary": 102.13,
+      "Larceny/Theft": 53.76,
+      "Motor Vehicle Theft": 133.13
+    },
+    "2025": {
+      "Burglary": 74.37,
+      "Larceny/Theft": 41.56,
+      "Motor Vehicle Theft": 75.3
+    }
+  },
+  "largest_gain_district": "SOUTHERN",
+  "largest_gain_pp": 6.034,
+  "largest_drop_district": "CENTRAL",
+  "largest_drop_pp": -6.028,
+  "district_share_table_pct": [
+    {
+      "district": "SOUTHERN",
+      "share_2019_pct": 11.089700565094073,
+      "share_2025_pct": 17.123503465658473,
+      "delta_pp": 6.0338029005644,
+      "count_2019": 5122,
+      "count_2025": 3261
+    },
+    {
+      "district": "TARAVAL",
+      "share_2019_pct": 6.971658691839695,
+      "share_2025_pct": 9.740600714135686,
+      "delta_pp": 2.768942022295991,
+      "count_2019": 3220,
+      "count_2025": 1855
+    },
+    {
+      "district": "MISSION",
+      "share_2019_pct": 10.782254747006734,
+      "share_2025_pct": 12.665406427221171,
+      "delta_pp": 1.883151680214437,
+      "count_2019": 4980,
+      "count_2025": 2412
+    },
+    {
+      "district": "INGLESIDE",
+      "share_2019_pct": 5.304522917704116,
+      "share_2025_pct": 6.448225162780928,
+      "delta_pp": 1.1437022450768122,
+      "count_2019": 2450,
+      "count_2025": 1228
+    },
+    {
+      "district": "BAYVIEW",
+      "share_2019_pct": 6.027670123627861,
+      "share_2025_pct": 6.232934257508926,
+      "delta_pp": 0.2052641338810654,
+      "count_2019": 2784,
+      "count_2025": 1187
+    },
+    {
+      "district": "PARK",
+      "share_2019_pct": 4.6051919371251655,
+      "share_2025_pct": 4.741650913673598,
+      "delta_pp": 0.1364589765484328,
+      "count_2019": 2127,
+      "count_2025": 903
+    },
+    {
+      "district": "TENDERLOIN",
+      "share_2019_pct": 6.040660791997748,
+      "share_2025_pct": 5.597563537072044,
+      "delta_pp": -0.4430972549257048,
+      "count_2019": 2790,
+      "count_2025": 1066
+    },
+    {
+      "district": "RICHMOND",
+      "share_2019_pct": 8.788187152228982,
+      "share_2025_pct": 6.227683259819366,
+      "delta_pp": -2.5605038924096166,
+      "count_2019": 4059,
+      "count_2025": 1186
+    },
+    {
+      "district": "NORTHERN",
+      "share_2019_pct": 19.412388767402085,
+      "share_2025_pct": 16.27284183994959,
+      "delta_pp": -3.139546927452494,
+      "count_2019": 8966,
+      "count_2025": 3099
+    },
+    {
+      "district": "CENTRAL",
+      "share_2019_pct": 20.977764305973544,
+      "share_2025_pct": 14.949590422180215,
+      "delta_pp": -6.028173883793328,
+      "count_2019": 9689,
+      "count_2025": 2847
+    }
+  ],
+  "largest_avg_share_shifts_2020_2021_vs_2019": [
+    {
+      "district": "CENTRAL",
+      "delta_pp": -2.191
+    },
+    {
+      "district": "INGLESIDE",
+      "delta_pp": 2.11
+    },
+    {
+      "district": "TENDERLOIN",
+      "delta_pp": -2.043
+    }
+  ],
+  "interactive_default_visible_districts": [
+    "CENTRAL",
+    "SOUTHERN",
+    "INGLESIDE",
+    "TENDERLOIN"
+  ],
+  "selected_counts": {
+    "Larceny_2019": 46754,
+    "Larceny_2020": 29588,
+    "Larceny_2025": 19432,
+    "Burglary_2019": 5692,
+    "Burglary_2020": 8645,
+    "MotorVehicleTheft_2019": 5288,
+    "MotorVehicleTheft_2023": 8777
+  },
+  "selected_pct_changes": {
+    "Larceny_2020_vs_2019_pct": -36.716,
+    "Larceny_2025_vs_2019_pct": -58.438,
+    "Burglary_2020_vs_2019_pct": 51.88,
+    "MVT_2023_vs_2019_pct": 65.98
+  },
+  "yearly_total_incidents": {
+    "2018": 78586,
+    "2019": 76695,
+    "2020": 60691,
+    "2021": 67821,
+    "2022": 74005,
+    "2023": 70327,
+    "2024": 53702,
+    "2025": 41577
+  },
+  "monthly_range": {
+    "start": "2018-01-01",
+    "end": "2025-12-01"
+  },
+  "validation_tables": {
+    "yearly_category_counts": [
+      {
+        "year": 2018,
+        "Burglary": 6594,
+        "Larceny/Theft": 46833,
+        "Motor Vehicle Theft": 5191
+      },
+      {
+        "year": 2019,
+        "Burglary": 5692,
+        "Larceny/Theft": 46754,
+        "Motor Vehicle Theft": 5288
+      },
+      {
+        "year": 2020,
+        "Burglary": 8645,
+        "Larceny/Theft": 29588,
+        "Motor Vehicle Theft": 7366
+      },
+      {
+        "year": 2021,
+        "Burglary": 8300,
+        "Larceny/Theft": 36565,
+        "Motor Vehicle Theft": 7717
+      },
+      {
+        "year": 2022,
+        "Burglary": 6862,
+        "Larceny/Theft": 41487,
+        "Motor Vehicle Theft": 8005
+      },
+      {
+        "year": 2023,
+        "Burglary": 6359,
+        "Larceny/Theft": 37239,
+        "Motor Vehicle Theft": 8777
+      },
+      {
+        "year": 2024,
+        "Burglary": 5813,
+        "Larceny/Theft": 25134,
+        "Motor Vehicle Theft": 7040
+      },
+      {
+        "year": 2025,
+        "Burglary": 4233,
+        "Larceny/Theft": 19432,
+        "Motor Vehicle Theft": 3982
+      }
+    ],
+    "yearly_category_index_2019_100": [
+      {
+        "year": 2018,
+        "Burglary": 115.84680252986648,
+        "Larceny/Theft": 100.16896949993583,
+        "Motor Vehicle Theft": 98.16565809379728
+      },
+      {
+        "year": 2019,
+        "Burglary": 100.0,
+        "Larceny/Theft": 100.0,
+        "Motor Vehicle Theft": 100.0
+      },
+      {
+        "year": 2020,
+        "Burglary": 151.8798313422347,
+        "Larceny/Theft": 63.284424862043885,
+        "Motor Vehicle Theft": 139.2965204236006
+      },
+      {
+        "year": 2021,
+        "Burglary": 145.81869290231904,
+        "Larceny/Theft": 78.2072122171365,
+        "Motor Vehicle Theft": 145.93419062027232
+      },
+      {
+        "year": 2022,
+        "Burglary": 120.55516514406183,
+        "Larceny/Theft": 88.73465371946784,
+        "Motor Vehicle Theft": 151.38048411497732
+      },
+      {
+        "year": 2023,
+        "Burglary": 111.71820098383695,
+        "Larceny/Theft": 79.648800102665,
+        "Motor Vehicle Theft": 165.97957639939486
+      },
+      {
+        "year": 2024,
+        "Burglary": 102.12579058327478,
+        "Larceny/Theft": 53.75796723275014,
+        "Motor Vehicle Theft": 133.13161875945536
+      },
+      {
+        "year": 2025,
+        "Burglary": 74.36753338018272,
+        "Larceny/Theft": 41.56221927535612,
+        "Motor Vehicle Theft": 75.30257186081695
+      }
+    ],
+    "district_share_2019_2025": [
+      {
+        "district": "SOUTHERN",
+        "count_2019": 5122,
+        "count_2025": 3261,
+        "share_2019": 0.11089700565094074,
+        "share_2025": 0.17123503465658474,
+        "share_2019_pct": 11.089700565094073,
+        "share_2025_pct": 17.123503465658473,
+        "delta_pp": 6.0338029005644
+      },
+      {
+        "district": "TARAVAL",
+        "count_2019": 3220,
+        "count_2025": 1855,
+        "share_2019": 0.06971658691839695,
+        "share_2025": 0.09740600714135686,
+        "share_2019_pct": 6.971658691839695,
+        "share_2025_pct": 9.740600714135686,
+        "delta_pp": 2.768942022295991
+      },
+      {
+        "district": "MISSION",
+        "count_2019": 4980,
+        "count_2025": 2412,
+        "share_2019": 0.10782254747006734,
+        "share_2025": 0.1266540642722117,
+        "share_2019_pct": 10.782254747006734,
+        "share_2025_pct": 12.665406427221171,
+        "delta_pp": 1.883151680214437
+      },
+      {
+        "district": "INGLESIDE",
+        "count_2019": 2450,
+        "count_2025": 1228,
+        "share_2019": 0.05304522917704116,
+        "share_2025": 0.06448225162780928,
+        "share_2019_pct": 5.304522917704116,
+        "share_2025_pct": 6.448225162780928,
+        "delta_pp": 1.1437022450768122
+      },
+      {
+        "district": "BAYVIEW",
+        "count_2019": 2784,
+        "count_2025": 1187,
+        "share_2019": 0.06027670123627861,
+        "share_2025": 0.062329342575089264,
+        "share_2019_pct": 6.027670123627861,
+        "share_2025_pct": 6.232934257508926,
+        "delta_pp": 0.2052641338810654
+      },
+      {
+        "district": "PARK",
+        "count_2019": 2127,
+        "count_2025": 903,
+        "share_2019": 0.04605191937125165,
+        "share_2025": 0.04741650913673598,
+        "share_2019_pct": 4.6051919371251655,
+        "share_2025_pct": 4.741650913673598,
+        "delta_pp": 0.1364589765484328
+      },
+      {
+        "district": "TENDERLOIN",
+        "count_2019": 2790,
+        "count_2025": 1066,
+        "share_2019": 0.060406607919977484,
+        "share_2025": 0.055975635370720436,
+        "share_2019_pct": 6.040660791997748,
+        "share_2025_pct": 5.597563537072044,
+        "delta_pp": -0.4430972549257048
+      },
+      {
+        "district": "RICHMOND",
+        "count_2019": 4059,
+        "count_2025": 1186,
+        "share_2019": 0.08788187152228982,
+        "share_2025": 0.06227683259819366,
+        "share_2019_pct": 8.788187152228982,
+        "share_2025_pct": 6.227683259819366,
+        "delta_pp": -2.5605038924096166
+      },
+      {
+        "district": "NORTHERN",
+        "count_2019": 8966,
+        "count_2025": 3099,
+        "share_2019": 0.19412388767402083,
+        "share_2025": 0.1627284183994959,
+        "share_2019_pct": 19.412388767402085,
+        "share_2025_pct": 16.27284183994959,
+        "delta_pp": -3.139546927452494
+      },
+      {
+        "district": "CENTRAL",
+        "count_2019": 9689,
+        "count_2025": 2847,
+        "share_2019": 0.20977764305973542,
+        "share_2025": 0.14949590422180214,
+        "share_2019_pct": 20.977764305973544,
+        "share_2025_pct": 14.949590422180215,
+        "delta_pp": -6.028173883793328
+      }
+    ],
+    "avg_share_shift_2020_2021_vs_2019": [
+      {
+        "district": "CENTRAL",
+        "avg_share_2019": 21.00174388185218,
+        "avg_share_2020_2021": 18.811236944965447,
+        "delta_pp": -2.1905069368867345
+      },
+      {
+        "district": "INGLESIDE",
+        "avg_share_2019": 5.279736081964053,
+        "avg_share_2020_2021": 7.389416412938755,
+        "delta_pp": 2.109680330974702
+      },
+      {
+        "district": "TENDERLOIN",
+        "avg_share_2019": 6.102025132195237,
+        "avg_share_2020_2021": 4.059422500749814,
+        "delta_pp": -2.0426026314454235
+      },
+      {
+        "district": "PARK",
+        "avg_share_2019": 4.545591484278686,
+        "avg_share_2020_2021": 6.341007594631514,
+        "delta_pp": 1.7954161103528277
+      },
+      {
+        "district": "RICHMOND",
+        "avg_share_2019": 8.6540949655884,
+        "avg_share_2020_2021": 9.75616972208858,
+        "delta_pp": 1.1020747565001816
+      },
+      {
+        "district": "SOUTHERN",
+        "avg_share_2019": 11.176686589422067,
+        "avg_share_2020_2021": 10.124605546296793,
+        "delta_pp": -1.0520810431252734
+      },
+      {
+        "district": "BAYVIEW",
+        "avg_share_2019": 6.045814830682903,
+        "avg_share_2020_2021": 7.000667422301045,
+        "delta_pp": 0.9548525916181418
+      },
+      {
+        "district": "NORTHERN",
+        "avg_share_2019": 19.389567369097687,
+        "avg_share_2020_2021": 18.50666479799922,
+        "delta_pp": -0.8829025710984659
+      },
+      {
+        "district": "TARAVAL",
+        "avg_share_2019": 6.955153112400876,
+        "avg_share_2020_2021": 7.73795073010885,
+        "delta_pp": 0.7827976177079741
+      },
+      {
+        "district": "MISSION",
+        "avg_share_2019": 10.849586552517907,
+        "avg_share_2020_2021": 10.272858327919979,
+        "delta_pp": -0.5767282245979288
+      }
+    ]
+  },
+  "top_changes": {
+    "district_share_increases_2019_2025_top3": [
+      {
+        "district": "SOUTHERN",
+        "count_2019": 5122,
+        "count_2025": 3261,
+        "share_2019": 0.11089700565094074,
+        "share_2025": 0.17123503465658474,
+        "share_2019_pct": 11.089700565094073,
+        "share_2025_pct": 17.123503465658473,
+        "delta_pp": 6.0338029005644
+      },
+      {
+        "district": "TARAVAL",
+        "count_2019": 3220,
+        "count_2025": 1855,
+        "share_2019": 0.06971658691839695,
+        "share_2025": 0.09740600714135686,
+        "share_2019_pct": 6.971658691839695,
+        "share_2025_pct": 9.740600714135686,
+        "delta_pp": 2.768942022295991
+      },
+      {
+        "district": "MISSION",
+        "count_2019": 4980,
+        "count_2025": 2412,
+        "share_2019": 0.10782254747006734,
+        "share_2025": 0.1266540642722117,
+        "share_2019_pct": 10.782254747006734,
+        "share_2025_pct": 12.665406427221171,
+        "delta_pp": 1.883151680214437
+      }
+    ],
+    "district_share_decreases_2019_2025_top3": [
+      {
+        "district": "CENTRAL",
+        "count_2019": 9689,
+        "count_2025": 2847,
+        "share_2019": 0.20977764305973542,
+        "share_2025": 0.14949590422180214,
+        "share_2019_pct": 20.977764305973544,
+        "share_2025_pct": 14.949590422180215,
+        "delta_pp": -6.028173883793328
+      },
+      {
+        "district": "NORTHERN",
+        "count_2019": 8966,
+        "count_2025": 3099,
+        "share_2019": 0.19412388767402083,
+        "share_2025": 0.1627284183994959,
+        "share_2019_pct": 19.412388767402085,
+        "share_2025_pct": 16.27284183994959,
+        "delta_pp": -3.139546927452494
+      },
+      {
+        "district": "RICHMOND",
+        "count_2019": 4059,
+        "count_2025": 1186,
+        "share_2019": 0.08788187152228982,
+        "share_2025": 0.06227683259819366,
+        "share_2019_pct": 8.788187152228982,
+        "share_2025_pct": 6.227683259819366,
+        "delta_pp": -2.5605038924096166
+      }
+    ],
+    "avg_monthly_share_increases_2020_2021_vs_2019_top3": [
+      {
+        "district": "INGLESIDE",
+        "avg_share_2019": 5.279736081964053,
+        "avg_share_2020_2021": 7.389416412938755,
+        "delta_pp": 2.109680330974702
+      },
+      {
+        "district": "PARK",
+        "avg_share_2019": 4.545591484278686,
+        "avg_share_2020_2021": 6.341007594631514,
+        "delta_pp": 1.7954161103528277
+      },
+      {
+        "district": "RICHMOND",
+        "avg_share_2019": 8.6540949655884,
+        "avg_share_2020_2021": 9.75616972208858,
+        "delta_pp": 1.1020747565001816
+      }
+    ],
+    "avg_monthly_share_decreases_2020_2021_vs_2019_top3": [
+      {
+        "district": "CENTRAL",
+        "avg_share_2019": 21.00174388185218,
+        "avg_share_2020_2021": 18.811236944965447,
+        "delta_pp": -2.1905069368867345
+      },
+      {
+        "district": "TENDERLOIN",
+        "avg_share_2019": 6.102025132195237,
+        "avg_share_2020_2021": 4.059422500749814,
+        "delta_pp": -2.0426026314454235
+      },
+      {
+        "district": "SOUTHERN",
+        "avg_share_2019": 11.176686589422067,
+        "avg_share_2020_2021": 10.124605546296793,
+        "delta_pp": -1.0520810431252734
+      }
+    ]
+  },
+  "headline_metrics": {
+    "largest_gain": {
+      "district": "SOUTHERN",
+      "count_2019": 5122,
+      "count_2025": 3261,
+      "share_2019": 0.11089700565094074,
+      "share_2025": 0.17123503465658474,
+      "share_2019_pct": 11.089700565094073,
+      "share_2025_pct": 17.123503465658473,
+      "delta_pp": 6.0338029005644
+    },
+    "largest_drop": {
+      "district": "CENTRAL",
+      "count_2019": 9689,
+      "count_2025": 2847,
+      "share_2019": 0.20977764305973542,
+      "share_2025": 0.14949590422180214,
+      "share_2019_pct": 20.977764305973544,
+      "share_2025_pct": 14.949590422180215,
+      "delta_pp": -6.028173883793328
+    },
+    "largest_avg_share_shifts_2020_2021_vs_2019": [
+      {
+        "district": "CENTRAL",
+        "delta_pp": -2.191
+      },
+      {
+        "district": "INGLESIDE",
+        "delta_pp": 2.11
+      },
+      {
+        "district": "TENDERLOIN",
+        "delta_pp": -2.043
+      }
+    ]
+  }
+}

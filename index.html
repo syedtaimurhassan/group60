@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analyzing Shifts in SF Property Crime (2018–2025)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* SFPD Thematic Colors */
+      --brand-navy: #0e294b;
+      --brand-navy-light: #1b4170;
+      --brand-gold: #c69c6d;
+      --brand-gold-light: #e8d8c3;
+      
+      /* Standard Colors */
+      --bg: #f9f9fa;
+      --text-main: #2a333d;
+      --text-muted: #5c6773;
+      --border: #e0e4e8;
+      --bg-panel: #ffffff;
+      
+      /* Typography */
+      --font-serif: 'Spectral', Georgia, serif;
+      --font-sans: 'Manrope', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-serif);
+      color: var(--text-main);
+      background-color: var(--bg);
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+
+    a {
+      color: var(--brand-navy-light);
+      text-decoration-color: var(--brand-gold);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+
+    a:hover { 
+      color: var(--brand-navy);
+      text-decoration-thickness: 2px;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .content-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header & Typography */
+    header {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .sfpd-logo {
+      width: 85px;
+      height: 85px;
+      object-fit: contain;
+      margin: 0 auto 1.5rem;
+      display: block;
+    }
+
+    .kicker {
+      font-family: var(--font-sans);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-gold);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      margin: 0 auto 1.5rem;
+      color: var(--brand-navy);
+      max-width: 900px;
+    }
+
+    .deck {
+      font-family: var(--font-sans);
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0 auto 2rem;
+      max-width: 800px;
+    }
+
+    .authors {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--brand-navy-light);
+      border-top: 1px solid var(--brand-gold-light);
+      border-bottom: 1px solid var(--brand-gold-light);
+      padding: 1rem 0;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin: 3rem 0 1rem;
+      line-height: 1.3;
+      color: var(--brand-navy);
+      border-bottom: 2px solid var(--brand-gold-light);
+      padding-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Summary Box */
+    .summary-box {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--brand-gold);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      box-shadow: 0 4px 12px rgba(14, 41, 75, 0.04);
+      border-radius: 4px;
+    }
+
+    .summary-box h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      color: var(--brand-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .summary-box ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .summary-box li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Scrollytelling Layout */
+    .scrolly-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin: 4rem 0;
+    }
+
+    @media (min-width: 900px) {
+      .scrolly-section {
+        grid-template-columns: 5fr 7fr;
+        align-items: start;
+      }
+    }
+
+    .scrolly-text {
+      padding-bottom: 50vh;
+    }
+
+    .scrolly-visual {
+      position: sticky;
+      top: 2rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      box-shadow: 0 8px 24px rgba(14, 41, 75, 0.06);
+      border-radius: 4px;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .figure-media {
+      background: #f4f5f7;
+      min-height: 400px;
+      position: relative;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    figure img, figure iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+      min-height: 500px;
+    }
+
+    figcaption {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      line-height: 1.5;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    .caption-label {
+      font-weight: 700;
+      color: var(--brand-navy);
+      margin-right: 0.25rem;
+    }
+
+    /* References */
+    .refs {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 2px solid var(--brand-navy);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .refs h3 {
+      color: var(--brand-navy);
+    }
+
+    .refs ul {
+      padding-left: 1.2rem;
+    }
+    
+    .refs li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <header>
+      <img src="assets/Seal_of_the_San_Francisco_Police_Department.png" alt="San Francisco Police Department Seal" class="sfpd-logo" />
+      <div class="kicker">San Francisco Crime Data Story</div>
+      <h1>Analyzing Shifts in San Francisco Property Crime (2018–2025)</h1>
+      <p class="deck">
+        In this project, we explored how different types of property crime trended after 2019. While total recorded incidents dropped, categories like burglary and motor vehicle theft did not follow the same path as larceny. By tracking district level data, we mapped how the geographic distribution of larceny shifted across SFPD districts over time.
+      </p>
+      <div class="authors">
+        Group 60 | S.T Hassan: s250112 | M. Abbas: s250145
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="summary-box">
+        <h3>Key Metrics at a Glance</h3>
+        <ul>
+          <li><strong>Larceny/Theft (2019 to 2025):</strong> -58.4%</li>
+          <li><strong>Burglary (2019 to 2020):</strong> +51.8%</li>
+          <li><strong>Motor Vehicle Theft (2019 to 2023):</strong> +65.9%</li>
+          <li><strong>Largest share shifts (2019 to 2025):</strong> SOUTHERN (+6.0 pp), CENTRAL (-6.0 pp)</li>
+        </ul>
+      </div>
+
+      <h2>Scope and Boundaries</h2>
+      <p>
+        For this project, we derived all counts from merged SFPD incident records (reproducible via our <code>build_assignment2_assets.py</code> script). We limited our scope to full years from 2018 to 2025, with normalized district names restricted to the 10 official SFPD districts. In our analysis, "property crime" specifically refers to Larceny/Theft, Burglary, and Motor Vehicle Theft.
+      </p>
+    </div>
+
+    <div class="scrolly-section">
+      <div class="scrolly-text">
+        <h2>1. Divergence Across Property Crime Categories</h2>
+        <p>
+          In our analysis of the filtered citywide data, we found that the total volume of property crime fell dramatically between 2019 and 2025, dropping from 76,695 incidents to 41,577 (a 45.7% decrease). However, this aggregate number hides three vastly different trajectories. 
+        </p>
+        <p>
+          We observed that Larceny/Theft dropped quickly during the initial disruption period. Conversely, Burglary and Motor Vehicle Theft rose significantly above their 2019 baselines before eventually tapering off.
+        </p>
+        <p>
+          Using an index scale allowed us to make this split directly comparable. In 2020, Larceny/Theft sat at 63.28 (relative to its 2019 baseline of 100), while Burglary spiked to 151.88, and Motor Vehicle Theft hit 139.30. By 2023, Larceny remained suppressed (79.65), while Motor Vehicle Theft reached its peak at 165.98.
+        </p>
+        <p>
+          Because Larceny/Theft historically dominates these categories in sheer volume (accounting for 46,754 incidents in 2019 compared to roughly 5,000 for the others), we chose to focus the spatial portion of our analysis strictly on Larceny. High-volume categories provide a much clearer, more reliable signal for measuring district-level composition shifts.
+        </p>
+      </div>
+      <div class="scrolly-visual">
+        <figure>
+          <div class="figure-media">
+            <img src="assets/fig1_static_property_crime_index_2018_2025.png" alt="Property crime index lines showing Larceny dropping while Burglary and Vehicle Theft rise." />
+          </div>
+          <figcaption>
+            <span class="caption-label">Figure 1.</span> Category trajectories normalized to their 2019 level (Index = 100). The post-2019 divergence shows larceny contracting sharply while burglary and vehicle theft temporarily rise.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="scrolly-section">
+      <div class="scrolly-text">
+        <h2>2. Shifting Geographic Composition of Larceny</h2>
+        <p>
+          When comparing the endpoints (2019 versus 2025), our data reveals a massive reallocation of where larceny occurs within the city. To measure this, we calculated "district share"—the fraction of citywide larceny that happened in a specific district. This isolates the geographic composition from the overall drop in crime volume.
+        </p>
+        <p>
+          In 2019, the CENTRAL district vastly exceeded the SOUTHERN district in its share of larceny by nearly 10 percentage points (20.9% vs 11.0%). By 2025, we found that this ordering entirely flipped. SOUTHERN grew to exceed CENTRAL, holding 17.1% of the city's share compared to CENTRAL's 14.9%.
+        </p>
+        <p>
+          We want to emphasize that a gain in <em>share</em> does not mean an increase in <em>absolute crime</em>. For example, while the SOUTHERN district gained the largest share (+6.0 pp), its absolute larceny count still declined from 5,122 incidents to 3,261. Its share grew simply because crime there shrank much slower than in the rest of the city.
+        </p>
+        <p>
+          We tracked this geographic redistribution across the entire city. NORTHERN's share dropped by 3.1 pp, while residential-heavy districts like TARAVAL and MISSION saw their relative shares rise by 2.7 pp and 1.8 pp, respectively.
+        </p>
+      </div>
+      <div class="scrolly-visual">
+        <figure>
+          <div class="figure-media">
+            <iframe src="assets/fig2_map_larceny_district_share_change_2019_2025.html" title="Choropleth map of larceny district share change"></iframe>
+          </div>
+          <figcaption>
+            <span class="caption-label">Figure 2.</span> Larceny share reallocation map (2019 to 2025). Colors represent the percentage-point change in a district's share of citywide larceny.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="scrolly-section">
+      <div class="scrolly-text">
+        <h2>3. Tracing the Timelines of Disruption</h2>
+        <p>
+          While comparing 2019 to 2025 summarizes the final outcome, we utilized monthly trajectories to reveal how those endpoints were reached. Districts ending up with similar shares in 2025 did not necessarily follow the same path to get there.
+        </p>
+        <p>
+          To quantify the immediate shock of the pandemic period, we compared each district's average monthly share during the 2020-2021 window against its 2019 monthly average. The largest absolute shifts occurred in CENTRAL (-2.1 pp), INGLESIDE (+2.1 pp), and TENDERLOIN (-2.0 pp). 
+        </p>
+        <p>
+          Our findings indicate that these figures represent sustained average differences over many months rather than brief single-month spikes. This suggests that the geographic shift in property crime was a prolonged structural change rather than a momentary glitch in the data.
+        </p>
+      </div>
+      <div class="scrolly-visual">
+        <figure>
+          <div class="figure-media">
+            <iframe src="assets/fig3_interactive_monthly_larceny_district_share_2018_2025.html" title="Interactive monthly larceny district share trajectories"></iframe>
+          </div>
+          <figcaption>
+            <span class="caption-label">Figure 3.</span> Monthly larceny share trajectories (2018-2025). The shaded 2020-2021 band marks the short-window comparison period.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <h2>Conclusion</h2>
+      <p>
+        Cross-examining these three perspectives allowed us to establish three durable results. First, property crime categories diverged sharply after 2019 and have only partially reconverged by 2025. Second, the geographic composition of Larceny heavily rotated across districts, with SOUTHERN absorbing the largest relative increase in share and CENTRAL experiencing the steepest drop.
+      </p>
+      <p>
+        Ultimately, our project highlights the importance of separating absolute counts from compositional shares. As demonstrated by the SOUTHERN district, an area can take on a larger burden of the city's overall crime share even while its local incident count is actively falling. These records describe significant changes in reporting patterns, geographic load, and timing, laying a factual groundwork for understanding San Francisco's shifting crime landscape.
+      </p>
+
+      <section class="refs">
+        <h3>References & Resources</h3>
+        <ul>
+          <li>Assignments and Week 8 exercise framing: <a href="https://github.com/suneman/socialdata2026/wiki/Assignments">socialdata2026 wiki</a>.</li>
+          <li>Narrative visualization framing: Segel &amp; Heer, <a href="https://vis.stanford.edu/files/2010-Narrative-InfoVis.pdf">Narrative Visualization: Telling Stories with Data</a>.</li>
+          <li>Primary data portal: <a href="https://data.sfgov.org">SF OpenData</a>.</li>
+          <li>we've used grammerly</li>
+          </ul>
+      </section>
+    </div>
+
+  </main>
+</body>
+</html>
