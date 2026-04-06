@@ -3,26 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Analyzing Shifts in SF Property Crime (2018–2025)</title>
+  <title>Analyzing Shifts in San Francisco Property Crime (2018-2025)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      /* SFPD Thematic Colors */
       --brand-navy: #0e294b;
       --brand-navy-light: #1b4170;
       --brand-gold: #c69c6d;
       --brand-gold-light: #e8d8c3;
-      
-      /* Standard Colors */
       --bg: #f9f9fa;
       --text-main: #2a333d;
       --text-muted: #5c6773;
       --border: #e0e4e8;
       --bg-panel: #ffffff;
-      
-      /* Typography */
       --font-serif: 'Spectral', Georgia, serif;
       --font-sans: 'Manrope', system-ui, sans-serif;
     }
@@ -46,12 +41,11 @@
       transition: color 0.2s ease;
     }
 
-    a:hover { 
+    a:hover {
       color: var(--brand-navy);
       text-decoration-thickness: 2px;
     }
 
-    /* Layout */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -63,7 +57,6 @@
       margin: 0 auto;
     }
 
-    /* Header & Typography */
     header {
       margin-top: 3rem;
       margin-bottom: 3rem;
@@ -102,7 +95,7 @@
       color: var(--text-muted);
       line-height: 1.6;
       margin: 0 auto 2rem;
-      max-width: 800px;
+      max-width: 820px;
     }
 
     .authors {
@@ -129,7 +122,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Summary Box */
     .summary-box {
       background: var(--bg-panel);
       border: 1px solid var(--border);
@@ -156,10 +148,18 @@
     }
 
     .summary-box li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.55rem;
     }
 
-    /* Scrollytelling Layout */
+    .method-note {
+      font-family: var(--font-sans);
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
     .scrolly-section {
       display: grid;
       grid-template-columns: 1fr;
@@ -224,7 +224,16 @@
       margin-right: 0.25rem;
     }
 
-    /* References */
+    .tip-box {
+      font-family: var(--font-sans);
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      background: #f5f7f9;
+      border-left: 4px solid var(--brand-gold);
+      padding: 0.9rem 1rem;
+      margin-top: 1rem;
+    }
+
     .refs {
       margin-top: 5rem;
       padding-top: 2rem;
@@ -241,9 +250,9 @@
     .refs ul {
       padding-left: 1.2rem;
     }
-    
+
     .refs li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
   </style>
 </head>
@@ -253,9 +262,9 @@
     <header>
       <img src="assets/Seal_of_the_San_Francisco_Police_Department.png" alt="San Francisco Police Department Seal" class="sfpd-logo" />
       <div class="kicker">San Francisco Crime Data Story</div>
-      <h1>Analyzing Shifts in San Francisco Property Crime (2018–2025)</h1>
+      <h1>Analyzing Shifts in San Francisco Property Crime (2018-2025)</h1>
       <p class="deck">
-        In this project, we explored how different types of property crime trended after 2019. While total recorded incidents dropped, categories like burglary and motor vehicle theft did not follow the same path as larceny. By tracking district level data, we mapped how the geographic distribution of larceny shifted across SFPD districts over time.
+        This story uses more than 500,000 filtered SFPD incident records from 2018 to 2025. We focus on three property-crime categories: Larceny/Theft, Burglary, and Motor Vehicle Theft. Our main question is simple: did these categories change in the same way after 2019, and did the geography of larceny also move across police districts?
       </p>
       <div class="authors">
         Group 60 | S.T Hassan: s250112 | M. Abbas: s250145
@@ -266,42 +275,51 @@
       <div class="summary-box">
         <h3>Key Metrics at a Glance</h3>
         <ul>
+          <li><strong>Total selected property crime (2019 to 2025):</strong> 76,695 to 41,577, a drop of 45.8%</li>
           <li><strong>Larceny/Theft (2019 to 2025):</strong> -58.4%</li>
-          <li><strong>Burglary (2019 to 2020):</strong> +51.8%</li>
-          <li><strong>Motor Vehicle Theft (2019 to 2023):</strong> +65.9%</li>
-          <li><strong>Largest share shifts (2019 to 2025):</strong> SOUTHERN (+6.0 pp), CENTRAL (-6.0 pp)</li>
+          <li><strong>Burglary (2019 to 2020):</strong> +51.9%</li>
+          <li><strong>Motor Vehicle Theft peak:</strong> index 165.98 in 2023</li>
+          <li><strong>Largest larceny share shifts (2019 to 2025):</strong> SOUTHERN (+6.03 pp), CENTRAL (-6.03 pp)</li>
         </ul>
+        <div class="method-note">
+          We study recorded incident reports, not official UCR or NIBRS crime totals. We use outside sources below as context only, not as proof of one single cause.
+        </div>
       </div>
 
-      <h2>Scope and Boundaries</h2>
+      <h2>Scope and boundaries</h2>
       <p>
-        For this project, we derived all counts from merged SFPD incident records (reproducible via our <code>build_assignment2_assets.py</code> script). We limited our scope to full years from 2018 to 2025, with normalized district names restricted to the 10 official SFPD districts. In our analysis, "property crime" specifically refers to Larceny/Theft, Burglary, and Motor Vehicle Theft.
+        We built all counts from merged SFPD incident records. We keep only full years from 2018 to 2025. We also limit district analysis to the 10 official SFPD districts, and in this story, "property crime" means only Larceny/Theft, Burglary, and Motor Vehicle Theft.
       </p>
+      <p>
+        This scope is important because the public SFPD incident dataset is designed to help people study incidents that were <a href="https://sfdigitalservices.gitbook.io/dataset-explainers/sfpd-incident-report-2018-to-present" target="_blank" rel="noopener">reported to or reported by the police</a>. DataSF also says these incident reports are <a href="https://sfdigitalservices.gitbook.io/dataset-explainers/sfpd-incident-report-2018-to-present#are-incident-reports-the-official-count-of-crime" target="_blank" rel="noopener">not the official count of crime</a>. That is why we describe patterns in recorded incidents, not the full reality of crime in the city.
+      </p>
+
+
     </div>
 
     <div class="scrolly-section">
       <div class="scrolly-text">
-        <h2>1. Divergence Across Property Crime Categories</h2>
+        <h2>1. Property-crime categories moved apart after 2019</h2>
         <p>
-          In our analysis of the filtered citywide data, we found that the total volume of property crime fell dramatically between 2019 and 2025, dropping from 76,695 incidents to 41,577 (a 45.7% decrease). However, this aggregate number hides three vastly different trajectories. 
+          The first result is that the three categories did not move together. If we only look at the combined total, selected property crime fell from 76,695 incidents in 2019 to 41,577 in 2025. But that single number hides very different paths.
         </p>
         <p>
-          We observed that Larceny/Theft dropped quickly during the initial disruption period. Conversely, Burglary and Motor Vehicle Theft rose significantly above their 2019 baselines before eventually tapering off.
+          Larceny/Theft dropped fast. Its index fell to 63.28 in 2020 and reached 41.56 by 2025. Burglary moved in the opposite direction at first, rising to 151.88 in 2020. Motor Vehicle Theft stayed high for longer and reached its peak in 2023 at 165.98.
         </p>
         <p>
-          Using an index scale allowed us to make this split directly comparable. In 2020, Larceny/Theft sat at 63.28 (relative to its 2019 baseline of 100), while Burglary spiked to 151.88, and Motor Vehicle Theft hit 139.30. By 2023, Larceny remained suppressed (79.65), while Motor Vehicle Theft reached its peak at 165.98.
+          This break starts in 2020, the same period when the Bay Area <a href="https://www.smcgov.org/ceo/news/march-16-2020-seven-bay-area-jurisdictions-order-residents-stay-home" target="_blank" rel="noopener">stay-at-home order</a> changed daily movement across the region. That timing gives useful context for the story, but our chart is still descriptive. It shows that the categories diverged. It does not prove that one event alone caused every change.
         </p>
         <p>
-          Because Larceny/Theft historically dominates these categories in sheer volume (accounting for 46,754 incidents in 2019 compared to roughly 5,000 for the others), we chose to focus the spatial portion of our analysis strictly on Larceny. High-volume categories provide a much clearer, more reliable signal for measuring district-level composition shifts.
+          We then focus on larceny for the spatial part of the story because it has much higher volume than the other two categories. In 2019, the dataset has 46,754 larceny incidents, compared with 5,692 burglary incidents and 5,288 motor vehicle theft incidents. A higher-volume category gives a cleaner district-level signal.
         </p>
       </div>
       <div class="scrolly-visual">
         <figure>
           <div class="figure-media">
-            <img src="assets/fig1_static_property_crime_index_2018_2025.png" alt="Property crime index lines showing Larceny dropping while Burglary and Vehicle Theft rise." />
+            <img src="assets/fig1_static_property_crime_index_2018_2025.png" alt="Property crime index lines showing larceny dropping while burglary and motor vehicle theft rise before falling later." />
           </div>
           <figcaption>
-            <span class="caption-label">Figure 1.</span> Category trajectories normalized to their 2019 level (Index = 100). The post-2019 divergence shows larceny contracting sharply while burglary and vehicle theft temporarily rise.
+            <span class="caption-label">Figure 1.</span> Each category is normalized to its own 2019 level. The main takeaway is clear: larceny falls and stays low, burglary jumps early, and motor vehicle theft stays elevated for longer.
           </figcaption>
         </figure>
       </div>
@@ -309,18 +327,21 @@
 
     <div class="scrolly-section">
       <div class="scrolly-text">
-        <h2>2. Shifting Geographic Composition of Larceny</h2>
+        <h2>2. The geography of larceny also changed</h2>
         <p>
-          When comparing the endpoints (2019 versus 2025), our data reveals a massive reallocation of where larceny occurs within the city. To measure this, we calculated "district share"—the fraction of citywide larceny that happened in a specific district. This isolates the geographic composition from the overall drop in crime volume.
+          In the second part, we stop looking at raw counts and switch to <strong>district share</strong>. District share means the percentage of all citywide larceny that happened in one district. This helps us study geography without mixing it up with the overall citywide drop.
         </p>
         <p>
-          In 2019, the CENTRAL district vastly exceeded the SOUTHERN district in its share of larceny by nearly 10 percentage points (20.9% vs 11.0%). By 2025, we found that this ordering entirely flipped. SOUTHERN grew to exceed CENTRAL, holding 17.1% of the city's share compared to CENTRAL's 14.9%.
+          The biggest shift is between CENTRAL and SOUTHERN. In 2019, CENTRAL held 21.0% of citywide larceny, while SOUTHERN held 11.1%. By 2025, this order had flipped. SOUTHERN rose to 17.1%, while CENTRAL fell to 14.9%.
         </p>
         <p>
-          We want to emphasize that a gain in <em>share</em> does not mean an increase in <em>absolute crime</em>. For example, while the SOUTHERN district gained the largest share (+6.0 pp), its absolute larceny count still declined from 5,122 incidents to 3,261. Its share grew simply because crime there shrank much slower than in the rest of the city.
+          This does <em>not</em> mean SOUTHERN had more larceny in absolute terms than before. In fact, SOUTHERN still fell from 5,122 incidents in 2019 to 3,261 in 2025. Its share went up because it shrank more slowly than the city as a whole. This is the key difference between count and share, and it is one of the most important points in our analysis.
         </p>
         <p>
-          We tracked this geographic redistribution across the entire city. NORTHERN's share dropped by 3.1 pp, while residential-heavy districts like TARAVAL and MISSION saw their relative shares rise by 2.7 pp and 1.8 pp, respectively.
+          The change is not only about two districts. The largest share gains came from SOUTHERN (+6.03 percentage points), TARAVAL (+2.77 pp), and MISSION (+1.88 pp). The largest share losses came from CENTRAL (-6.03 pp), NORTHERN (-3.14 pp), and RICHMOND (-2.56 pp).
+        </p>
+        <p>
+          Outside context also helps here. San Francisco's <a href="https://www.sf.gov/data--office-vacancy-rate" target="_blank" rel="noopener">office vacancy series</a> says the city has not returned to its 2019 low since the COVID period. We use that only as background for why downtown patterns may have stayed unusual for several years. The map itself still shows only recorded larceny share, nothing more.
         </p>
       </div>
       <div class="scrolly-visual">
@@ -329,7 +350,7 @@
             <iframe src="assets/fig2_map_larceny_district_share_change_2019_2025.html" title="Choropleth map of larceny district share change"></iframe>
           </div>
           <figcaption>
-            <span class="caption-label">Figure 2.</span> Larceny share reallocation map (2019 to 2025). Colors represent the percentage-point change in a district's share of citywide larceny.
+            <span class="caption-label">Figure 2.</span> This map shows percentage-point change in each district's share of citywide larceny from 2019 to 2025. SOUTHERN gains the most share, while CENTRAL loses the most.
           </figcaption>
         </figure>
       </div>
@@ -337,16 +358,19 @@
 
     <div class="scrolly-section">
       <div class="scrolly-text">
-        <h2>3. Tracing the Timelines of Disruption</h2>
+        <h2>3. The monthly view shows a lasting shift</h2>
         <p>
-          While comparing 2019 to 2025 summarizes the final outcome, we utilized monthly trajectories to reveal how those endpoints were reached. Districts ending up with similar shares in 2025 did not necessarily follow the same path to get there.
+          Endpoint comparisons are useful, but they do not show how the change happened. Figure 3 uses monthly district shares of citywide larceny. This is important because the values here are not the same as the full-year 2025 shares in Section 2. Section 2 uses annual shares. Figure 3 shows month-by-month movement.
         </p>
         <p>
-          To quantify the immediate shock of the pandemic period, we compared each district's average monthly share during the 2020-2021 window against its 2019 monthly average. The largest absolute shifts occurred in CENTRAL (-2.1 pp), INGLESIDE (+2.1 pp), and TENDERLOIN (-2.0 pp). 
+          To study the first shock period, we compare each district's average monthly share in 2020 and 2021 with its own 2019 monthly average. The largest average changes are CENTRAL (-2.19 pp), INGLESIDE (+2.11 pp), and TENDERLOIN (-2.04 pp). These are average differences across many months, not one unusual month.
         </p>
         <p>
-          Our findings indicate that these figures represent sustained average differences over many months rather than brief single-month spikes. This suggests that the geographic shift in property crime was a prolonged structural change rather than a momentary glitch in the data.
+          That matters because it suggests the shift was not just a short lockdown dip. The pattern stayed visible over a longer period. We still keep the language careful here. The monthly plot supports the idea of a lasting redistribution in recorded larceny, but it does not prove a single mechanism behind it.
         </p>
+        <div class="tip-box">
+          Tip: Click a district name to hide or show it. Double-click one district if you want to isolate its line.
+        </div>
       </div>
       <div class="scrolly-visual">
         <figure>
@@ -354,7 +378,7 @@
             <iframe src="assets/fig3_interactive_monthly_larceny_district_share_2018_2025.html" title="Interactive monthly larceny district share trajectories"></iframe>
           </div>
           <figcaption>
-            <span class="caption-label">Figure 3.</span> Monthly larceny share trajectories (2018-2025). The shaded 2020-2021 band marks the short-window comparison period.
+            <span class="caption-label">Figure 3.</span> The monthly chart helps explain the timeline behind the endpoint flip. The default view shows CENTRAL and SOUTHERN because they matter for the 2025 endpoint story, and INGLESIDE and TENDERLOIN because they have some of the largest 2020 to 2021 average shifts.
           </figcaption>
         </figure>
       </div>
@@ -363,20 +387,22 @@
     <div class="content-wrapper">
       <h2>Conclusion</h2>
       <p>
-        Cross-examining these three perspectives allowed us to establish three durable results. First, property crime categories diverged sharply after 2019 and have only partially reconverged by 2025. Second, the geographic composition of Larceny heavily rotated across districts, with SOUTHERN absorbing the largest relative increase in share and CENTRAL experiencing the steepest drop.
+        Looking across all three views, we reach three main conclusions. First, the three property-crime categories clearly diverged after 2019 instead of moving together. Second, the geography of larceny changed, with CENTRAL losing share and SOUTHERN gaining the most. Third, the monthly chart shows that this was not only a two endpoint story. The shift stayed visible across many months.
       </p>
-      <p>
-        Ultimately, our project highlights the importance of separating absolute counts from compositional shares. As demonstrated by the SOUTHERN district, an area can take on a larger burden of the city's overall crime share even while its local incident count is actively falling. These records describe significant changes in reporting patterns, geographic load, and timing, laying a factual groundwork for understanding San Francisco's shifting crime landscape.
-      </p>
+
 
       <section class="refs">
         <h3>References & Resources</h3>
         <ul>
-          <li>Assignments and Week 8 exercise framing: <a href="https://github.com/suneman/socialdata2026/wiki/Assignments">socialdata2026 wiki</a>.</li>
-          <li>Narrative visualization framing: Segel &amp; Heer, <a href="https://vis.stanford.edu/files/2010-Narrative-InfoVis.pdf">Narrative Visualization: Telling Stories with Data</a>.</li>
-          <li>Primary data portal: <a href="https://data.sfgov.org">SF OpenData</a>.</li>
-          <li>we've used grammerly</li>
-          </ul>
+          <li>Assignments and Week 8 framing: <a href="https://github.com/suneman/socialdata2026/wiki/Assignments" target="_blank" rel="noopener">socialdata2026 wiki</a>.</li>
+          <li>Narrative visualization framing: Segel &amp; Heer, <a href="https://vis.stanford.edu/files/2010-Narrative-InfoVis.pdf" target="_blank" rel="noopener">Narrative Visualization: Telling Stories with Data</a>.</li>
+          <li>Primary data portal: DataSF, <a href="https://data.sfgov.org/Public-Safety/Police-Department-Incident-Reports-2018-to-Present/wg3w-h783" target="_blank" rel="noopener">Police Department Incident Reports: 2018 to Present</a>.</li>
+          <li>Dataset scope and limitations: DataSF Dataset Explainers, <a href="https://sfdigitalservices.gitbook.io/dataset-explainers/sfpd-incident-report-2018-to-present" target="_blank" rel="noopener">SFPD Incident Report: 2018 to Present</a>.</li>
+          <li>Critical discussion of policing data: Richardson, Schultz, and Crawford, <a href="https://nyulawreview.org/online-features/dirty-data-bad-predictions-how-civil-rights-violations-impact-police-data-predictive-policing-systems-and-justice/" target="_blank" rel="noopener">Dirty Data, Bad Predictions</a>.</li>
+          <li>Pandemic timing context: Bay Area jurisdictions, <a href="https://www.smcgov.org/ceo/news/march-16-2020-seven-bay-area-jurisdictions-order-residents-stay-home" target="_blank" rel="noopener">March 16, 2020 stay-at-home announcement</a>.</li>
+          <li>Downtown activity context: City and County of San Francisco, <a href="https://www.sf.gov/data--office-vacancy-rate" target="_blank" rel="noopener">Office Vacancy Rate</a>.</li>
+          <li>Responsible interpretation of crime statistics: FBI, <a href="https://ucr.fbi.gov/ucr-statistics-their-proper-use/view" target="_blank" rel="noopener">UCR Statistics: Their Proper Use</a>.</li>
+        </ul>
       </section>
     </div>
 
